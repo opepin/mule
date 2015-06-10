@@ -53,7 +53,7 @@ public class EncryptStreamTransformer implements StreamTransformer
     public void initialize(OutputStream out) throws Exception
     {
         armoredOut = new ArmoredOutputStream(out);
-        PGPEncryptedDataGenerator encrDataGen = new PGPEncryptedDataGenerator(PGPEncryptedData.CAST5, false,
+        PGPEncryptedDataGenerator encrDataGen = new PGPEncryptedDataGenerator(PGPEncryptedData.CAST5, true,
             new SecureRandom(), "BC");
         encrDataGen.addMethod(this.publicKey);
         encryptedOutputStream = encrDataGen.open(armoredOut, new byte[1 << 16]);
